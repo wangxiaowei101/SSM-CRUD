@@ -3,9 +3,8 @@
   <display-name>ssm-crud</display-name>
   <welcome-file-list>
 
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>login.jsp</welcome-file>
+   
   </welcome-file-list>
     <!-- 静态资源放行 -->
   <servlet-mapping>
