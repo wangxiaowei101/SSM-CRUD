@@ -115,9 +115,19 @@ public class AdminController {
 			ret.put("msg", "登陆成功");
 			session.setAttribute("user", username);
 			
+			
 			return ret; 
 		
 	}
+	
+
+	@RequestMapping("loginOut")
+	public String loginOut(HttpServletRequest request,HttpSession session) {
+		session.removeAttribute("user");
+		request.setAttribute("msg1", "退出成功");
+	   
+		return "forward:/login.jsp" ;
+	}  
 	
 	
 	@RequestMapping(value="get_cpacha", method=RequestMethod.GET)
