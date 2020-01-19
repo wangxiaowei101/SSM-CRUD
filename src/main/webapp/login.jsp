@@ -83,9 +83,6 @@ alert("没有权限请先登陆！");
 <meta name="keywords" content="员工管理系统">
 </head>
 <body>
- 
-
-
 
 <div class="header" style="padding: 0;">
 	<h2 style="color: white; width: 400px; height: 60px; line-height: 60px; margin: 0 0 0 30px; padding: 0;">员工管理系统</h2>
@@ -115,13 +112,17 @@ alert("没有权限请先登陆！");
       <div class="row">
         <div class="formControls col-8 col-offset-3">
           <input id="submitBtn" type="button" class="btn btn-success radius size-L" value="&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;">
+        <div style="color:red"> 
+           ${msg1}
+         </div>
         </div>
+        
       </div>
     </form>
   </div>
 </div>
 <div class="footer">Copyright &nbsp; SWU @ WXW </div>
-
+ 
 
 </body>
 </html>
