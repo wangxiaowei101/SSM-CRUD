@@ -221,7 +221,7 @@
            			
            			//console.log(result);
            			//1.解析员工数据
-           			//2，解析显示分页
+           			
            			build_emps_table(result);
            			//解析显示分页数据
            			build_page_info(result);
