@@ -1,128 +1,98 @@
-<%@  page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="renderer" content="webkit|ie-comp|ie-stand">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<%
+ pageContext.setAttribute("APP_PATH", request.getContextPath());
+%>
 
-<link rel="shortcut icon" href="favicon.ico"/>
-<link rel="bookmark" href="favicon.ico"/>
-<link href="static/h-ui/css/H-ui.min.css" rel="stylesheet" type="text/css" />
-<link href="static/h-ui/css/H-ui.login.css" rel="stylesheet" type="text/css" />
-<link href="static/h-ui/lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
-<link href="static/h-ui/lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<link href="${APP_PATH }/static/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="${APP_PATH }/static/js/jquery-1.12.4.js"></script>
+ <script src="${APP_PATH }/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</head>
+<style type="text/css">
 
-<link rel="stylesheet" type="text/css" href="static/easyui/themes/default/easyui.css">
-<link rel="stylesheet" type="text/css" href="static/easyui/themes/icon.css">
+      
 
-<script type="text/javascript" src="static/easyui/jquery.min.js"></script> 
-<script type="text/javascript" src="static/h-ui/js/H-ui.js"></script> 
-<script type="text/javascript" src="static/h-ui/lib/icheck/jquery.icheck.min.js"></script> 
 
-<script type="text/javascript" src="static/easyui/jquery.easyui.min.js"></script>
+     </style>
 
 <script type="text/javascript">
-            
 	$(function(){
 		//点击图片切换验证码
 		$("#vcodeImg").click(function(){
-			this.src="get_cpacha?v1=4&w=160&h=50&t="+new Date().getTime();
+			this.src="get_cpacha?v1=6&w=565&h=50&t="+new Date().getTime();
 		});
-	
+		
 		//登录
 		$("#submitBtn").click(function(){
 			
 			
 			var data = $("#form").serialize();
+			
 			$.ajax({
 				type: "post",
-				url: "login",
+				url: "${APP_PATH }/login",
 				data: data, 
 				dataType: "json", //返回数据类型
 				success: function(data){
 					if("success" == data.type){
-						
-						
 						window.location.href = "index";
 					} else{
-						$.messager.alert("消息提醒", data.msg, "warning");
+						alert(data.msg);
 						$("#vcodeImg").click();//切换验证码
 						$("input[name='vcode']").val("");//清空验证码输入框
 					}	
 				}
 			});
 		});
-		
-		//设置复选框
-		$(".skin-minimal input").iCheck({
-			radioClass: 'iradio-blue',
-			increaseArea: '25%'
-		});
-	})
 	
-	<%
-Object rs = request.getAttribute("msg"); 
-if(rs!=null)
-{
-%>
-alert("没有权限请先登陆！");
-
-<%
-};
-%>
-
-
-
-
-</script> 
-<title>登录|员工管理系统</title>
-<meta name="keywords" content="员工管理系统">
-</head>
-<body>
-
-<div class="header" style="padding: 0;">
-	<h2 style="color: white; width: 400px; height: 60px; line-height: 60px; margin: 0 0 0 30px; padding: 0;">员工管理系统</h2>
-</div>
-<div class="loginWraper">
-  <div id="loginform" class="loginBox">
-    <form id="form" class="form form-horizontal" method="post">
-      <div class="row cl">
-        <label class="form-label col-3"><i class="Hui-iconfont">&#xe60d;</i></label>
-        <div class="formControls col-8">
-          <input id="username" name="username" type="text" placeholder="账户" class="input-text size-L">
-        </div>
-      </div>
-      <div class="row cl">
-        <label class="form-label col-3"><i class="Hui-iconfont">&#xe60e;</i></label>
-        <div class="formControls col-8">
-          <input id="password" name="password" type="password" placeholder="密码" class="input-text size-L">
-        </div>
-      </div>
-      <div class="row cl">
-        <div class="formControls col-8 col-offset-3">
-          <input class="input-text size-L" name="vcode" type="text" placeholder="请输入验证码" style="width: 200px;">
-          <img title="点击图片切换验证码" id="vcodeImg" src="get_cpacha?v1=4&w=160&h=50"></div>
-      </div>
-      
-     
-      <div class="row">
-        <div class="formControls col-8 col-offset-3">
-          <input id="submitBtn" type="button" class="btn btn-success radius size-L" value="&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;">
-        <div style="color:red"> 
-           ${msg1}
-         </div>
-        </div>
-        
-      </div>
-    </form>
-  </div>
-</div>
-<div class="footer">Copyright &nbsp; SWU @ WXW </div>
+	})
+</script>
+<body style=" background: url(https://picsum.photos/id/186/2048/1275) no-repeat center center fixed; background-size: 100%;">
  
-
+ 
+    <div class="modal-dialog" style="margin-top: 10%;">
+        <div class="modal-content">
+        <form id="form"  method="post">
+            <div class="modal-header">
+ 
+                <h4 class="modal-title text-center" id="myModalLabel">管理员登录</h4>
+            </div>
+            <div class="modal-body" id = "model-body">
+                <div class="form-group">
+ 
+                    <input type="text" name="username" class="form-control"placeholder="用户名" autocomplete="off">
+                </div>
+                <div class="form-group">
+ 
+                    <input type="password" name="password" class="form-control" placeholder="密码" autocomplete="off">
+                </div>
+                 <div class="form-group">
+                  <div>
+                    <input type="text" name="vcode" class="form-control" placeholder="请输入验证码" autocomplete="off" >
+                    <br>
+                     <img  title="点击图片切换验证码" id="vcodeImg" src="get_cpacha?v1=6&w=565&h=50">
+                   
+                     
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="form-group">
+                    <button id="submitBtn" type="button" class="btn btn-primary form-control">登录</button>
+                </div>
+ 
+            </div>
+          
+        </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+ 
 </body>
+
+
 </html>

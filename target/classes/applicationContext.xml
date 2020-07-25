@@ -9,7 +9,7 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
-
+	<context:component-scan base-package="com.wxw.*"/>
 <context:property-placeholder location="classpath:dbconfig.properties"/>
 <bean id="pooledDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
          <property name="driverClass" value="${jdbc.driverClass}"/>
@@ -54,5 +54,44 @@
 		<tx:method name="get*" read-only="true"/>
 		</tx:attributes>
 		
-		</tx:advice>	 
+		</tx:advice>	
+		
+			<!-- 1.注入自定义realm -->
+	<bean id="myRealm" class="com.wxw.shiro.UserRealm" />
+	<!-- 2.将realm注入到securityManager安全管理器 -->
+	<bean id="securityManager"
+		class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="myRealm" />
+	</bean>
+	<!-- 3.Shiro过滤器 -->
+	<bean id="shiroFilter"
+		class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<!-- Shiro的核心安全接口,这个属性是必须的 -->
+		<property name="securityManager" ref="securityManager" />
+		<!-- 身份认证失败，则跳转到登录页面的配置 -->
+		<property name="loginUrl" value="/login.jsp" />
+		<!-- 权限认证失败，则跳转到指定页面 -->
+		<!-- Shiro连接约束配置,即过滤链的定义 -->
+		<property name="filterChainDefinitions">
+			<value>
+			<!-- 登录请求可匿名访问  -->
+				/login = anon
+				/login.jsp=anon
+				
+				<!-- 以下所有请求必须经过身份验证才可访问 -->
+				/index= authc
+				/index.jsp=authc
+			</value>
+		</property>
+	</bean>
+	<!-- 4.保证实现了Shiro内部lifecycle函数的bean执行 -->
+	<bean id="lifecycleBeanPostProcessor"
+		class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+	<!-- 5.开启Shiro注解 -->
+
+	<bean
+		class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+		<property name="securityManager" ref="securityManager" />
+	</bean>
+		 
 </beans>

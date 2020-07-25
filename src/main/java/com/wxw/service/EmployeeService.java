@@ -87,10 +87,7 @@ public void deleteBatch(List<Integer> ids) {
 }
 
 
-public User findByUserName(String username) {
-	// TODO Auto-generated method stub
-	return employeeMapper.findByUserName(username);
-}
+
 
 
 
