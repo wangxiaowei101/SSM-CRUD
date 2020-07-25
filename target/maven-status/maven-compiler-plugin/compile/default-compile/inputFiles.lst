@@ -1,4 +1,7 @@
 D:\java文件路径\maven\ssm-crud\src\main\java\com\wxw\controller\DepartmentController.java
+D:\java文件路径\maven\ssm-crud\src\main\java\com\wxw\shiro\UserRealm.java
+D:\java文件路径\maven\ssm-crud\src\main\java\com\wxw\controller\LoginController.java
+D:\java文件路径\maven\ssm-crud\src\main\java\com\wxw\service\UserServiceImpl.java
 D:\java文件路径\maven\ssm-crud\src\main\java\com\wxw\bean\Msg.java
 D:\java文件路径\maven\ssm-crud\src\main\java\com\wxw\controller\EmployeeController.java
 D:\java文件路径\maven\ssm-crud\src\main\java\com\wxw\service\DepartmentService.java
@@ -9,10 +12,10 @@ D:\java文件路径\maven\ssm-crud\src\main\java\com\wxw\bean\Departmet.java
 D:\java文件路径\maven\ssm-crud\src\main\java\com\wxw\test\MBGTest.java
 D:\java文件路径\maven\ssm-crud\src\main\java\com\wxw\test\MvcTest.java
 D:\java文件路径\maven\ssm-crud\src\main\java\com\wxw\utils\CpachaUtil.java
+D:\java文件路径\maven\ssm-crud\src\main\java\com\wxw\dao\UserMapper.java
 D:\java文件路径\maven\ssm-crud\src\main\java\com\wxw\service\EmployeeService.java
+D:\java文件路径\maven\ssm-crud\src\main\java\com\wxw\service\UserService.java
 D:\java文件路径\maven\ssm-crud\src\main\java\com\wxw\bean\DepartmetExample.java
-D:\java文件路径\maven\ssm-crud\src\main\java\com\wxw\controller\AdminController.java
 D:\java文件路径\maven\ssm-crud\src\main\java\com\wxw\test\MapperTest.java
 D:\java文件路径\maven\ssm-crud\src\main\java\com\wxw\dao\EmployeeMapper.java
-D:\java文件路径\maven\ssm-crud\src\main\java\com\wxw\utils\LoginInterceptor.java
 D:\java文件路径\maven\ssm-crud\src\main\java\com\wxw\dao\DepartmetMapper.java

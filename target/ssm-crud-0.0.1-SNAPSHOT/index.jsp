@@ -16,12 +16,9 @@
 
 </head>
 <body>
-  <div region="north" split="true" border="false" style="overflow: hidden; height: 30px;
-        background: #7f99be repeat-x center 50%;
-        line-height: 20px;color: #fff; font-family: Verdana, 微软雅黑,黑体">
-        <span style="float:right; padding-right:20px;" class="head"><span style="color:red; font-weight:bold;">${user}&nbsp;</span>您好&nbsp;&nbsp;&nbsp;<a href="${APP_PATH}/loginOut" id="loginOut">安全退出</a></span>
-
-    </div>
+  <div >
+      <button style="margin-left:1100px;margin-top: 10px" id="btn_zx" type="button" class="glyphicon glyphicon-off btn btn-default " >单击注销</button>
+    </div> 
 
 <!-- 员工修改模态框 -->
 <div class="modal fade" id="empUpdateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -221,7 +218,7 @@
            			
            			//console.log(result);
            			//1.解析员工数据
-           			//2，解析显示分页
+           			
            			build_emps_table(result);
            			//解析显示分页数据
            			build_page_info(result);
@@ -641,6 +638,13 @@
     		});
     	}
      });
+     
+    $("#btn_zx").click(function(){
+    	
+    	window.location.href = "cancellation";
+    	
+    	
+    });
 </script>
 </body>
 </html>

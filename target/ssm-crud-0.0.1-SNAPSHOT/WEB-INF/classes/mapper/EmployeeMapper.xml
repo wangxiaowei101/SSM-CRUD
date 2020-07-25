@@ -119,16 +119,7 @@
  left join tbl_dept d on e.d_id=d.dept_id
     where emp_id = #{empId,jdbcType=INTEGER}
   </select>
-   
-   
-   <select id="findByUserName" parameterType="String" resultType="com.wxw.bean.User"  >
-		select * from admin where  username = #{username} 
-	</select>
-   
-   
-   
-   
-   
+
    
   <select id="selectByExample" parameterType="com.wxw.bean.EmployeeExample" resultMap="BaseResultMap">
   
@@ -316,4 +307,6 @@
       d_id = #{dId,jdbcType=INTEGER}
     where emp_id = #{empId,jdbcType=INTEGER}
   </update>
+  
+ 
 </mapper>
