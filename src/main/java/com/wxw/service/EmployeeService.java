@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.wxw.bean.Employee;
 import com.wxw.bean.EmployeeExample;
 import com.wxw.bean.EmployeeExample.Criteria;
-import com.wxw.bean.User;
 import com.wxw.dao.EmployeeMapper;
 
 @Service

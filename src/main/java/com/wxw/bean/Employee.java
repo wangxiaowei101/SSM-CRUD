@@ -2,7 +2,7 @@ package com.wxw.bean;
 
 import javax.validation.constraints.Pattern;
 
-import org.junit.runners.Parameterized.Parameter;
+import com.wxw.bean.Departmet;
 
 public class Employee {
     /**

@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
 <%
  pageContext.setAttribute("APP_PATH", request.getContextPath());
@@ -16,16 +17,19 @@
 <style type="text/css">
 
       
+body {
+    background: url("static/bg.png");
+
+
+}
+
 
 
      </style>
 
 <script type="text/javascript">
 	$(function(){
-		//点击图片切换验证码
-		$("#vcodeImg").click(function(){
-			this.src="get_cpacha?v1=6&w=565&h=50&t="+new Date().getTime();
-		});
+	
 		
 		//登录
 		$("#submitBtn").click(function(){
@@ -52,7 +56,7 @@
 	
 	})
 </script>
-<body style=" background: url(https://picsum.photos/id/186/2048/1275) no-repeat center center fixed; background-size: 100%;">
+<body >
  
  
     <div class="modal-dialog" style="margin-top: 10%;">
@@ -64,22 +68,14 @@
             </div>
             <div class="modal-body" id = "model-body">
                 <div class="form-group">
- 
-                    <input type="text" name="username" class="form-control"placeholder="用户名" autocomplete="off">
+                 
+                    <input type="text" name="username" class="form-control "placeholder="用户名" autocomplete="off">
                 </div>
                 <div class="form-group">
  
                     <input type="password" name="password" class="form-control" placeholder="密码" autocomplete="off">
                 </div>
-                 <div class="form-group">
-                  <div>
-                    <input type="text" name="vcode" class="form-control" placeholder="请输入验证码" autocomplete="off" >
-                    <br>
-                     <img  title="点击图片切换验证码" id="vcodeImg" src="get_cpacha?v1=6&w=565&h=50">
-                   
-                     
-                    </div>
-                </div>
+                
             </div>
             <div class="modal-footer">
                 <div class="form-group">

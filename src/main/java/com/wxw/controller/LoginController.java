@@ -26,7 +26,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.wxw.bean.User;
 import com.wxw.service.UserService;
-import com.wxw.service.UserServiceImpl;
 import com.wxw.utils.CpachaUtil;
 
 
@@ -34,7 +33,7 @@ import com.wxw.utils.CpachaUtil;
 @Controller
 public class LoginController {
 	
-	@Autowired
+    @Autowired
 	UserService userService;
 	
 	@RequestMapping(value="index", method=RequestMethod.GET)
@@ -53,7 +52,6 @@ public class LoginController {
 	public Map<String,String> login(
 			@RequestParam(value="username",required = true) String username,
 			@RequestParam(value="password",required = true) String password, 
-			@RequestParam(value="vcode",required = true) String vcode,
 			 HttpServletRequest request
 			){
 		
@@ -68,24 +66,11 @@ public class LoginController {
 			ret.put("msg", "密码不能为空！");
 			return ret;
 		}
-		if(StringUtils.isEmpty(vcode)) {
-			ret.put("type", "error");
-			ret.put("msg", "验证码不能为空！");
-			return ret;
-		}
 		
-		String loginCpacha  = (String) request.getSession().getAttribute("loginCpacha");
-		if(StringUtils.isEmpty(loginCpacha)) {
-			ret.put("type", "error");
-			ret.put("msg","长时间未操作，会话已失效，请刷新后重试"); 
-			return ret;
-		}
-		if(!vcode.toUpperCase().equals(loginCpacha.toUpperCase())) {
-			ret.put("type", "error");
-			ret.put("msg","验证码错误!");
-			return ret;
-		}
-		request.getSession().setAttribute("loginCpacha",null);
+		
+	
+	
+
 		//1.获取subject主体
 		Subject subject = SecurityUtils.getSubject();
 		//2.创建令牌
@@ -131,26 +116,28 @@ public class LoginController {
 	}
 	
 
-	@RequestMapping(value="get_cpacha", method=RequestMethod.GET)
-	public  void getcpacha(HttpServletRequest requset ,
-			@RequestParam(value="v1",defaultValue = "4",required=false) Integer v1,
-			@RequestParam(value="w",defaultValue = "98",required=false) Integer w,
-			@RequestParam(value="h",defaultValue = "33",required=false) Integer h,
-			
-			
-			HttpServletResponse response) {
-		
-		CpachaUtil cpachaUtil = new CpachaUtil(v1,w,h);
-		String generatorVCode = cpachaUtil.generatorVCode();
-		requset.getSession().setAttribute("loginCpacha", generatorVCode);
-		BufferedImage generatorRotateVCodeImage = cpachaUtil.generatorRotateVCodeImage(generatorVCode, true);
-		 try {
-			ImageIO.write(generatorRotateVCodeImage, "gif", response.getOutputStream());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		 
-	}
+	/*
+	 * @RequestMapping(value="get_cpacha", method=RequestMethod.GET) public void
+	 * getcpacha(HttpServletRequest requset ,
+	 * 
+	 * @RequestParam(value="v1",defaultValue = "4",required=false) Integer v1,
+	 * 
+	 * @RequestParam(value="w",defaultValue = "98",required=false) Integer w,
+	 * 
+	 * @RequestParam(value="h",defaultValue = "33",required=false) Integer h,
+	 * 
+	 * 
+	 * HttpServletResponse response) {
+	 * 
+	 * CpachaUtil cpachaUtil = new CpachaUtil(v1,w,h); String generatorVCode =
+	 * cpachaUtil.generatorVCode(); requset.getSession().setAttribute("loginCpacha",
+	 * generatorVCode); BufferedImage generatorRotateVCodeImage =
+	 * cpachaUtil.generatorRotateVCodeImage(generatorVCode, true); try {
+	 * ImageIO.write(generatorRotateVCodeImage, "gif", response.getOutputStream());
+	 * } catch (IOException e) { // TODO Auto-generated catch block
+	 * e.printStackTrace(); }
+	 * 
+	 * }
+	 */
 
 }

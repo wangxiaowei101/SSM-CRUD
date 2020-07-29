@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>员工列表</title>
 <%
  pageContext.setAttribute("APP_PATH", request.getContextPath());
@@ -15,9 +16,15 @@
  <script src="${APP_PATH }/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
 </head>
+<style type="text/css">
+
+
+     </style>
 <body>
-  <div >
-      <button style="margin-left:1100px;margin-top: 10px" id="btn_zx" type="button" class="glyphicon glyphicon-off btn btn-default " >单击注销</button>
+  <div>
+  	<p align="right" style="margin-top: 20px;margin-right: 20px">
+      <button  id="btn_zx" type="button" class="glyphicon glyphicon-off btn btn-default " >单击注销</button>
+     </p>
     </div> 
 
 <!-- 员工修改模态框 -->

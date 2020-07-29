@@ -1,7 +1,5 @@
 package com.wxw.test;
 
-import java.util.UUID;
-
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,7 +8,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.wxw.bean.Departmet;
-import com.wxw.bean.Employee;
 import com.wxw.dao.DepartmetMapper;
 import com.wxw.dao.EmployeeMapper;
 

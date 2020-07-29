@@ -1,11 +1,11 @@
 package com.wxw.dao;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.wxw.bean.Employee;
 import com.wxw.bean.EmployeeExample;
-import com.wxw.bean.User;
-
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface EmployeeMapper {
     /**

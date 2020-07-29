@@ -1,7 +1,5 @@
 package com.wxw.dao;
 
-import org.springframework.stereotype.Repository;
-
 import com.wxw.bean.User;
 
 
